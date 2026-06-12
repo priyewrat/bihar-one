@@ -1,0 +1,838 @@
+{
+  "state": "Bihar",
+  "districts": [
+    {
+      "district": "Araria",
+      "subdivisions": [
+        {
+          "subdivision": "Araria",
+          "blocks": [
+            {
+              "block": "Araria",
+              "policeStations": ["Araria", "Narpatganj"]
+            },
+            {
+              "block": "Forbesganj",
+              "policeStations": ["Forbesganj", "Bhargama"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Arwal",
+      "subdivisions": [
+        {
+          "subdivision": "Arwal",
+          "blocks": [
+            {
+              "block": "Arwal",
+              "policeStations": ["Arwal", "Kaler"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Aurangabad",
+      "subdivisions": [
+        {
+          "subdivision": "Aurangabad",
+          "blocks": [
+            {
+              "block": "Aurangabad",
+              "policeStations": ["Aurangabad", "Daudnagar"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Banka",
+      "subdivisions": [
+        {
+          "subdivision": "Banka",
+          "blocks": [
+            {
+              "block": "Banka",
+              "policeStations": ["Banka", "Amarpur"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Begusarai",
+      "subdivisions": [
+        {
+          "subdivision": "Begusarai",
+          "blocks": [
+            {
+              "block": "Begusarai",
+              "policeStations": ["Begusarai", "Balia"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Bhagalpur",
+      "subdivisions": [
+        {
+          "subdivision": "Bhagalpur",
+          "blocks": [
+            {
+              "block": "Nathnagar",
+              "policeStations": ["Nathnagar", "Ishakchak"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Bhojpur",
+      "subdivisions": [
+        {
+          "subdivision": "Ara",
+          "blocks": [
+            {
+              "block": "Ara",
+              "policeStations": ["Ara Nawada", "Town"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Buxar",
+      "subdivisions": [
+        {
+          "subdivision": "Buxar",
+          "blocks": [
+            {
+              "block": "Buxar",
+              "policeStations": ["Buxar", "Dumraon"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Darbhanga",
+      "subdivisions": [
+        {
+          "subdivision": "Darbhanga",
+          "blocks": [
+            {
+              "block": "Darbhanga",
+              "policeStations": ["Laheriasarai", "University"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "East Champaran",
+      "subdivisions": [
+        {
+          "subdivision": "Motihari",
+          "blocks": [
+            {
+              "block": "Motihari",
+              "policeStations": ["Motihari", "Chhatauni"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Gaya",
+      "subdivisions": [
+        {
+          "subdivision": "Gaya Sadar",
+          "blocks": [
+            {
+              "block": "Bodh Gaya",
+              "policeStations": ["Bodh Gaya", "Magadh University"]
+            },
+            {
+              "block": "Manpur",
+              "policeStations": ["Mufassil", "Buniyadganj"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Gopalganj",
+      "subdivisions": [
+        {
+          "subdivision": "Gopalganj",
+          "blocks": [
+            {
+              "block": "Gopalganj",
+              "policeStations": ["Gopalganj", "Thawe"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Jamui",
+      "subdivisions": [
+        {
+          "subdivision": "Jamui",
+          "blocks": [
+            {
+              "block": "Jamui",
+              "policeStations": ["Jamui", "Khaira"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Jehanabad",
+      "subdivisions": [
+        {
+          "subdivision": "Jehanabad",
+          "blocks": [
+            {
+              "block": "Jehanabad",
+              "policeStations": ["Jehanabad", "Kako"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Kaimur",
+      "subdivisions": [
+        {
+          "subdivision": "Bhabua",
+          "blocks": [
+            {
+              "block": "Bhabua",
+              "policeStations": ["Bhabua", "Mohania"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Katihar",
+      "subdivisions": [
+        {
+          "subdivision": "Katihar",
+          "blocks": [
+            {
+              "block": "Katihar",
+              "policeStations": ["Katihar", "Mufassil"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Khagaria",
+      "subdivisions": [
+        {
+          "subdivision": "Khagaria",
+          "blocks": [
+            {
+              "block": "Khagaria",
+              "policeStations": ["Khagaria", "Mansi"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Kishanganj",
+      "subdivisions": [
+        {
+          "subdivision": "Kishanganj",
+          "blocks": [
+            {
+              "block": "Kishanganj",
+              "policeStations": ["Kishanganj", "Bahadurganj"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Lakhisarai",
+      "subdivisions": [
+        {
+          "subdivision": "Lakhisarai",
+          "blocks": [
+            {
+              "block": "Lakhisarai",
+              "policeStations": ["Lakhisarai", "Barahiya"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Madhepura",
+      "subdivisions": [
+        {
+          "subdivision": "Madhepura",
+          "blocks": [
+            {
+              "block": "Madhepura",
+              "policeStations": ["Madhepura", "Murliganj"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Madhubani",
+      "subdivisions": [
+        {
+          "subdivision": "Madhubani",
+          "blocks": [
+            {
+              "block": "Madhubani",
+              "policeStations": ["Madhubani", "Rajnagar"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Munger",
+      "subdivisions": [
+        {
+          "subdivision": "Munger",
+          "blocks": [
+            {
+              "block": "Munger",
+              "policeStations": ["Munger", "Kotwali"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Muzaffarpur",
+      "subdivisions": [
+        {
+          "subdivision": "Muzaffarpur East",
+          "blocks": [
+            {
+              "block": "Mushahari",
+              "policeStations": ["Mithanpura", "Ahiyapur"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Nalanda",
+      "subdivisions": [
+        {
+          "subdivision": "Bihar Sharif",
+          "blocks": [
+            {
+              "block": "Bihar Sharif",
+              "policeStations": [
+                "Laheri",
+                "Sohsarai",
+                "Deepnagar",
+                "Bihar",
+                "Katra"
+              ]
+            },
+            {
+              "block": "Noorsarai",
+              "policeStations": [
+                "Noorsarai",
+                "Chandi"
+              ]
+            },
+            {
+              "block": "Rahui",
+              "policeStations": [
+                "Rahui",
+                "Bind"
+              ]
+            }
+          ]
+        },
+        {
+          "subdivision": "Rajgir",
+          "blocks": [
+            {
+              "block": "Rajgir",
+              "policeStations": [
+                "Rajgir",
+                "Silao",
+                "Giriyak"
+              ]
+            },
+            {
+              "block": "Nagarnausa",
+              "policeStations": [
+                "Nagarnausa",
+                "Islampur"
+              ]
+            }
+          ]
+        },
+        {
+          "subdivision": "Hilsa",
+          "blocks": [
+            {
+              "block": "Hilsa",
+              "policeStations": [
+                "Hilsa",
+                "Karai Parsurai",
+                "Tharthari"
+              ]
+            },
+            {
+              "block": "Ekangarsarai",
+              "policeStations": [
+                "Ekangarsarai",
+                "Telhara"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Nawada",
+      "subdivisions": [
+        {
+          "subdivision": "Nawada",
+          "blocks": [
+            {
+              "block": "Nawada",
+              "policeStations": ["Nawada", "Hisua"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Patna",
+      "subdivisions": [
+        {
+          "subdivision": "Patna Sadar",
+          "blocks": [
+            {
+              "block": "Patna Rural",
+              "policeStations": [
+                "Pirbahore",
+                "Gandhi Maidan",
+                "Kotwali",
+                "Kadamkuan",
+                "Jakkanpur",
+                "Shastri Nagar",
+                "Buddha Colony",
+                "Alamganj",
+                "Agamkuan"
+              ]
+            },
+            {
+              "block": "Danapur",
+              "policeStations": [
+                "Danapur",
+                "Shahpur",
+                "Rupaspur",
+                "Khagaul",
+                "Bihta"
+              ]
+            },
+            {
+              "block": "Phulwari Sharif",
+              "policeStations": [
+                "Phulwari Sharif",
+                "Airport",
+                "Beur",
+                "Parsa Bazar"
+              ]
+            }
+          ]
+        },
+        {
+          "subdivision": "Barh",
+          "blocks": [
+            {
+              "block": "Barh",
+              "policeStations": [
+                "Barh",
+                "Athmalgola",
+                "Bakhtiyarpur",
+                "Belchi"
+              ]
+            },
+            {
+              "block": "Mokama",
+              "policeStations": [
+                "Mokama",
+                "Maranchi",
+                "Pandarak"
+              ]
+            }
+          ]
+        },
+        {
+          "subdivision": "Masaurhi",
+          "blocks": [
+            {
+              "block": "Masaurhi",
+              "policeStations": [
+                "Masaurhi",
+                "Dhanarua",
+                "Punpun"
+              ]
+            },
+            {
+              "block": "Paliganj",
+              "policeStations": [
+                "Paliganj",
+                "Sigori",
+                "Khiri Mod"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Purnia",
+      "subdivisions": [
+        {
+          "subdivision": "Purnia",
+          "blocks": [
+            {
+              "block": "Purnia East",
+              "policeStations": ["Purnia", "Sahayak Khajanchi"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Rohtas",
+      "subdivisions": [
+        {
+          "subdivision": "Sasaram",
+          "blocks": [
+            {
+              "block": "Sasaram",
+              "policeStations": ["Sasaram", "Darigaon"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Saharsa",
+      "subdivisions": [
+        {
+          "subdivision": "Saharsa",
+          "blocks": [
+            {
+              "block": "Kahara",
+              "policeStations": ["Saharsa", "Sadar"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Samastipur",
+      "subdivisions": [
+        {
+          "subdivision": "Samastipur",
+          "blocks": [
+            {
+              "block": "Samastipur",
+              "policeStations": ["Samastipur", "Muffasil"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Saran",
+      "subdivisions": [
+        {
+          "subdivision": "Chapra",
+          "blocks": [
+            {
+              "block": "Chapra",
+              "policeStations": [
+                "Chapra",
+                "Town",
+                "Muffasil",
+                "Nagara"
+              ]
+            },
+            {
+              "block": "Rivilganj",
+              "policeStations": [
+                "Rivilganj",
+                "Doriganj"
+              ]
+            },
+            {
+              "block": "Maker",
+              "policeStations": [
+                "Maker",
+                "Taraiya"
+              ]
+            }
+          ]
+        },
+        {
+          "subdivision": "Sonepur",
+          "blocks": [
+            {
+              "block": "Sonepur",
+              "policeStations": [
+                "Sonepur",
+                "Dighwara",
+                "Nayagaon"
+              ]
+            },
+            {
+              "block": "Parsa",
+              "policeStations": [
+                "Parsa",
+                "Maker"
+              ]
+            }
+          ]
+        },
+        {
+          "subdivision": "Marhaura",
+          "blocks": [
+            {
+              "block": "Marhaura",
+              "policeStations": [
+                "Marhaura",
+                "Panapur"
+              ]
+            },
+            {
+              "block": "Amnour",
+              "policeStations": [
+                "Amnour"
+              ]
+            },
+            {
+              "block": "Ishupur",
+              "policeStations": [
+                "Ishupur",
+                "Bheldi"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Sheikhpura",
+      "subdivisions": [
+        {
+          "subdivision": "Sheikhpura",
+          "blocks": [
+            {
+              "block": "Sheikhpura",
+              "policeStations": ["Sheikhpura", "Ariyari"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Sheohar",
+      "subdivisions": [
+        {
+          "subdivision": "Sheohar",
+          "blocks": [
+            {
+              "block": "Sheohar",
+              "policeStations": ["Sheohar", "Piprahi"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Sitamarhi",
+      "subdivisions": [
+        {
+          "subdivision": "Sitamarhi",
+          "blocks": [
+            {
+              "block": "Dumra",
+              "policeStations": [
+                "Dumra",
+                "Sitamarhi",
+                "Mehsaul"
+              ]
+            },
+            {
+              "block": "Belsand",
+              "policeStations": [
+                "Belsand",
+                "Parsauni"
+              ]
+            },
+            {
+              "block": "Riga",
+              "policeStations": [
+                "Riga",
+                "Suppi"
+              ]
+            }
+          ]
+        },
+        {
+          "subdivision": "Pupri",
+          "blocks": [
+            {
+              "block": "Pupri",
+              "policeStations": [
+                "Pupri",
+                "Nanpur",
+                "Bajpatti"
+              ]
+            },
+            {
+              "block": "Bokhara",
+              "policeStations": [
+                "Bokhara",
+                "Choraut"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Siwan",
+      "subdivisions": [
+        {
+          "subdivision": "Siwan Sadar",
+          "blocks": [
+            {
+              "block": "Siwan",
+              "policeStations": [
+                "Siwan Town",
+                "Muffasil",
+                "Mahadeva",
+                "Hathua More"
+              ]
+            },
+            {
+              "block": "Hussainganj",
+              "policeStations": [
+                "Hussainganj",
+                "GB Nagar"
+              ]
+            },
+            {
+              "block": "Goriakothi",
+              "policeStations": [
+                "Goriakothi",
+                "Lakri Nabiganj"
+              ]
+            }
+          ]
+        },
+        {
+          "subdivision": "Maharajganj",
+          "blocks": [
+            {
+              "block": "Maharajganj",
+              "policeStations": [
+                "Maharajganj",
+                "Basantpur",
+                "Daraunda"
+              ]
+            },
+            {
+              "block": "Pachrukhi",
+              "policeStations": [
+                "Pachrukhi",
+                "Barharia"
+              ]
+            }
+          ]
+        },
+        {
+          "subdivision": "Andar",
+          "blocks": [
+            {
+              "block": "Andar",
+              "policeStations": [
+                "Andar",
+                "Raghunathpur",
+                "Assaon"
+              ]
+            },
+            {
+              "block": "Siswan",
+              "policeStations": [
+                "Siswan",
+                "Chainpur"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Supaul",
+      "subdivisions": [
+        {
+          "subdivision": "Supaul",
+          "blocks": [
+            {
+              "block": "Supaul",
+              "policeStations": ["Supaul", "Pipra"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "Vaishali",
+      "subdivisions": [
+        {
+          "subdivision": "Hajipur",
+          "blocks": [
+            {
+              "block": "Hajipur",
+              "policeStations": ["Hajipur", "Industrial Area"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "district": "West Champaran",
+      "subdivisions": [
+        {
+          "subdivision": "Bettiah",
+          "blocks": [
+            {
+              "block": "Bettiah",
+              "policeStations": ["Bettiah", "Chanpatia"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
