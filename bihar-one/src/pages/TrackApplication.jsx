@@ -1,15 +1,15 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ Added useNavigate import
+import { useNavigate } from "react-router-dom";
 import { FaSearch, FaCheckCircle, FaCircle, FaInfoCircle, FaFileDownload, FaTimesCircle, FaUndo } from "react-icons/fa";
 import { AppContext } from "../context/AppContext";
 
 export default function TrackApplication() {
   const [query, setQuery] = useState("");
-  const [applicationId, setApplicationId] = useState(null); // ✅ Store the confirmed ID after a successful search
+  const [applicationId, setApplicationId] = useState(null);
   const [status, setStatus] = useState(null);
   const [verificationLevel, setVerificationLevel] = useState(null);
   const { backendUrl } = useContext(AppContext);
-  const navigate = useNavigate(); // ✅ Initialize navigate hook
+  const navigate = useNavigate();
 
   const handleSearch = async () => {
     if (query.trim() !== "") {
@@ -40,7 +40,7 @@ export default function TrackApplication() {
         const data = await response.json();
         setStatus({ text: data.status, type: "step", remark: data.remark });
         setVerificationLevel(data.verificationLevel);
-        setApplicationId(query); // ✅ Save valid query to applicationId state
+        setApplicationId(query);
       } catch (error) {
         setStatus({ text: "Server Error", type: "error" });
         setApplicationId(null);
@@ -48,12 +48,11 @@ export default function TrackApplication() {
     }
   };
 
-  // ✅ Clear function to reset the page seamlessly
   const handleClear = () => {
     setQuery("");
     setStatus(null);
     setVerificationLevel(null);
-    setApplicationId(null); // ✅ Clear the saved ID
+    setApplicationId(null);
   };
 
   const stepsMap = {
@@ -81,29 +80,41 @@ export default function TrackApplication() {
     const currentIndex = steps.indexOf(currentStatus);
 
     return (
-      <div className="mt-8 bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+      <div className="mt-8 bg-white border border-gray-200 rounded-xl p-4 md:p-6 shadow-sm">
         <h3 className="text-lg font-bold text-gray-800 mb-6 flex items-center gap-2">
           <span className="w-2 h-5 bg-blue-600 rounded-full"></span> Live Lifecycle Progress
         </h3>
-        <div className="flex flex-row items-start justify-between relative overflow-x-auto py-4 min-w-[600px]">
+        
+        {/* Changed to flex-col on mobile, flex-row on md+ screens */}
+        <div className="flex flex-col md:flex-row md:items-start justify-between relative py-2 md:py-4 gap-8 md:gap-0">
           {steps.map((step, index) => {
             const isCompleted = currentIndex >= index;
             const isActive = step === currentStatus;
             const isRejected = step.startsWith("REJECTED");
 
             return (
-              <div key={step} className="flex flex-col items-center flex-1 relative px-2 group">
-                {/* Connecting Line */}
+              <div key={step} className="flex flex-row md:flex-col items-center md:flex-1 relative md:px-2 group">
+                
+                {/* Connecting Line (Desktop: Horizontal) */}
                 {index < steps.length - 1 && (
                   <div
-                    className={`absolute top-4 left-[50%] right-[-50%] h-[3px] z-0 transition-colors duration-300 ${
+                    className={`hidden md:block absolute top-4 left-[50%] right-[-50%] h-[3px] z-0 transition-colors duration-300 ${
+                      currentIndex > index ? "bg-green-500" : "bg-gray-200"
+                    }`}
+                  />
+                )}
+
+                {/* Connecting Line (Mobile: Vertical) */}
+                {index < steps.length - 1 && (
+                  <div
+                    className={`md:hidden absolute left-[17px] top-[36px] w-[3px] h-[calc(100%+32px)] z-0 transition-colors duration-300 ${
                       currentIndex > index ? "bg-green-500" : "bg-gray-200"
                     }`}
                   />
                 )}
 
                 {/* Node Icon */}
-                <div className="relative z-10 transition-transform duration-300 group-hover:scale-110">
+                <div className="relative z-10 transition-transform duration-300 group-hover:scale-110 flex-shrink-0">
                   {isRejected ? (
                     <FaTimesCircle className="w-9 h-9 text-red-500 bg-white rounded-full" />
                   ) : isCompleted ? (
@@ -119,7 +130,7 @@ export default function TrackApplication() {
 
                 {/* Step Text Label */}
                 <span
-                  className={`mt-3 text-xs text-center font-semibold max-w-[110px] tracking-tight ${
+                  className={`ml-4 md:ml-0 mt-0 md:mt-3 text-sm md:text-xs text-left md:text-center font-semibold md:max-w-[110px] tracking-tight flex-1 md:flex-none ${
                     isRejected
                       ? "text-red-600"
                       : isActive
@@ -140,16 +151,16 @@ export default function TrackApplication() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 sm:p-10">
-      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 sm:p-6 lg:p-10">
+      <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
         
         {/* LEFT COLUMN: Contextual / Info Side */}
-        <div className="lg:col-span-4 bg-white border border-gray-200 rounded-2xl p-6 shadow-sm space-y-6">
+        <div className="lg:col-span-4 bg-white border border-gray-200 rounded-2xl p-5 sm:p-6 shadow-sm space-y-5 sm:space-y-6">
           <div>
-            <span className="bg-blue-50 text-blue-700 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">
+            <span className="bg-blue-50 text-blue-700 text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider inline-block mb-3">
               Application Tracking
             </span>
-            <h1 className="text-2xl font-extrabold text-slate-800 mt-3 tracking-tight">
+            <h1 className="text-xl sm:text-2xl font-extrabold text-slate-800 tracking-tight">
               Track Status
             </h1>
             <p className="text-sm text-gray-500 mt-2 leading-relaxed">
@@ -165,7 +176,7 @@ export default function TrackApplication() {
             <div className="space-y-3">
               <div className="flex items-start space-x-3 text-sm text-gray-600">
                 <span className="w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</span>
-                <p>Enter your full Application Number exactly as shown on your receipt (e.g., <strong>RES-1780459810129</strong>).</p>
+                <p>Enter your full Application Number exactly as shown on your receipt (e.g., <strong className="break-all">RES-1780459810129</strong>).</p>
               </div>
               <div className="flex items-start space-x-3 text-sm text-gray-600">
                 <span className="w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
@@ -187,7 +198,7 @@ export default function TrackApplication() {
         <div className="lg:col-span-8 space-y-6">
           
           {/* Main Search Panel */}
-          <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
+          <div className="bg-white border border-gray-200 rounded-2xl p-5 sm:p-6 shadow-sm">
             <h2 className="text-lg font-bold text-gray-800 mb-4">Enter Reference Number</h2>
             <div className="flex flex-col sm:flex-row items-stretch gap-2 border-2 border-gray-200 rounded-xl overflow-hidden focus-within:border-blue-500 transition-colors bg-gray-50/50 p-1">
               <input
@@ -224,7 +235,7 @@ export default function TrackApplication() {
             {/* Error Message Layout */}
             {status && status.type === "error" && (
               <div className="mt-4 px-4 py-3 rounded-xl border font-medium flex items-center gap-3 bg-red-50 text-red-700 border-red-200 text-sm">
-                <FaTimesCircle className="w-5 h-5 text-red-500" />
+                <FaTimesCircle className="w-5 h-5 text-red-500 shrink-0" />
                 <span>{status.text}</span>
               </div>
             )}
@@ -239,15 +250,14 @@ export default function TrackApplication() {
 
               {/* Resolution / Post Actions Panel */}
               {status?.text === "CERTIFICATE_ISSUED" && (
-                <div className="bg-green-50 border border-green-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <div className="flex items-center gap-3 text-green-800 text-sm">
-                    <FaCheckCircle className="w-6 h-6 text-green-500 shrink-0" />
+                <div className="bg-green-50 border border-green-200 rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-center text-center sm:text-left justify-between gap-4">
+                  <div className="flex flex-col sm:flex-row items-center gap-3 text-green-800 text-sm">
+                    <FaCheckCircle className="w-8 h-8 sm:w-6 sm:h-6 text-green-500 shrink-0" />
                     <div>
                       <h4 className="font-bold text-base">Process Complete!</h4>
                       <p className="text-green-700/90 mt-0.5">Your official digital document has been verified and securely generated.</p>
                     </div>
                   </div>
-                  {/* ✅ Added navigation on click */}
                   <button 
                     onClick={() => navigate(`/certificate/${applicationId}`)}
                     className="bg-green-600 text-white px-5 py-3 rounded-xl hover:bg-green-700 transition flex items-center gap-2 font-bold text-sm shadow-md shadow-green-100 shrink-0 w-full sm:w-auto justify-center cursor-pointer"
@@ -259,14 +269,14 @@ export default function TrackApplication() {
               )}
 
               {["REJECTED_BY_RO", "REJECTED_BY_DM", "REJECTED_BY_SDM"].includes(status?.text) && (
-                <div className="bg-red-50 border border-red-200 rounded-2xl p-6 text-sm">
-                  <div className="flex items-start gap-3 text-red-800">
-                    <FaTimesCircle className="w-6 h-6 text-red-500 shrink-0 mt-0.5" />
-                    <div>
+                <div className="bg-red-50 border border-red-200 rounded-2xl p-5 sm:p-6 text-sm">
+                  <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 text-red-800">
+                    <FaTimesCircle className="w-8 h-8 sm:w-6 sm:h-6 text-red-500 shrink-0 mt-0 sm:mt-0.5" />
+                    <div className="w-full">
                       <h4 className="font-bold text-base">Application Declined</h4>
                       <p className="font-semibold text-red-700 mt-0.5">Stage: {status.text.replace(/_/g, " ")}</p>
                       {status.remark && (
-                        <div className="mt-3 bg-white/80 border border-red-100 p-3 rounded-xl text-red-900 font-medium">
+                        <div className="mt-3 bg-white/80 border border-red-100 p-3 rounded-xl text-red-900 font-medium w-full break-words">
                           <span className="text-xs text-red-500 font-bold uppercase tracking-wider block mb-1">Official Reason Code</span>
                           "{status.remark}"
                         </div>

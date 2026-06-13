@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserCircle, FaBars, FaTimes } from "react-icons/fa";
 import { AppContext } from "../context/AppContext";
 
 // Helper function to decode a JWT and check if it has expired
@@ -35,18 +35,20 @@ const isTokenExpired = (token) => {
 function Navbar() {
   const { user, token, logout } = useContext(AppContext);
   const [open, setOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   const navLinkClass = ({ isActive }) =>
     isActive
-      ? "bg-blue-700 text-white px-5 py-2 rounded"
-      : "hover:text-blue-700";
+      ? "bg-blue-700 text-white px-5 py-2 rounded block text-center md:text-left"
+      : "hover:text-blue-700 px-5 py-2 block text-center md:text-left md:p-0";
 
   const isLoggedIn = !!token;
   const role = localStorage.getItem("role");
 
   useEffect(() => {
     setOpen(false);
+    setMobileMenuOpen(false);
   }, [location]);
 
   // Continuously monitor token for expiration or removal
@@ -54,18 +56,14 @@ function Navbar() {
     const checkAuthStatus = () => {
       const currentStorageToken = localStorage.getItem("token");
       
-      // If there is no token in storage OR the token is physically expired
       if (!currentStorageToken || isTokenExpired(currentStorageToken)) {
-        // If the Context still thinks we are logged in, force a logout
         if (token) {
           logout();
         }
       }
     };
 
-    // Check every second (catches expiration and same-tab token removal)
     const interval = setInterval(checkAuthStatus, 1000);
-    // Check on cross-tab storage changes (catches logout from a different tab)
     window.addEventListener("storage", checkAuthStatus);
 
     return () => {
@@ -78,40 +76,47 @@ function Navbar() {
   const officerRoles = ["DM", "SP", "SDM", "TEHSILDAR", "RO", "BO", "FO"];
   const isOfficer = officerRoles.includes(role);
 
+  // Reusable component for links to avoid duplication
+  const NavLinks = () => (
+    <>
+      {/* Citizens */}
+      {!isOfficer && (
+        <>
+          <NavLink to="/" className={navLinkClass}>Home</NavLink>
+          <NavLink to="/services" className={navLinkClass}>Services</NavLink>
+          <NavLink to="/about" className={navLinkClass}>About</NavLink>
+          <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
+        </>
+      )}
+
+      {/* Officers */}
+      {isOfficer && (
+        <>
+          <NavLink to="/officer-dashboard" className={navLinkClass}>Home</NavLink>
+          <NavLink to="/about" className={navLinkClass}>About</NavLink>
+          <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
+        </>
+      )}
+    </>
+  );
+
   return (
-    <nav className="bg-white border-b-4 border-blue-700 z-50 print:hidden">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-10 py-5">
+    <nav className="bg-white border-b-4 border-blue-700 z-50 print:hidden relative">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-5 md:px-10 py-5">
         {/* Logo */}
-        <div>
-          <h1 className="text-4xl font-bold">
+        <div className="flex-shrink-0 z-50 bg-white">
+          <h1 className="text-3xl md:text-4xl font-bold">
             <span className="text-orange-500">Bihar</span>
             <span className="text-blue-700">One</span>
           </h1>
-          <p className="text-sm text-gray-600">
+          <p className="text-xs md:text-sm text-gray-600">
             One Portal for All Bihar Services
           </p>
         </div>
 
-        {/* Navigation Links */}
-        <ul className="flex gap-10 text-lg font-semibold items-center">
-          {/* Citizens */}
-          {!isOfficer && (
-            <>
-              <NavLink to="/" className={navLinkClass}>Home</NavLink>
-              <NavLink to="/services" className={navLinkClass}>Services</NavLink>
-              <NavLink to="/about" className={navLinkClass}>About</NavLink>
-              <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
-            </>
-          )}
-
-          {/* Officers */}
-          {isOfficer && (
-            <>
-              <NavLink to="/officer-dashboard" className={navLinkClass}>Home</NavLink>
-              <NavLink to="/about" className={navLinkClass}>About</NavLink>
-              <NavLink to="/contact" className={navLinkClass}>Contact</NavLink>
-            </>
-          )}
+        {/* Desktop Navigation Links */}
+        <ul className="hidden md:flex gap-10 text-lg font-semibold items-center z-50">
+          <NavLinks />
 
           {isLoggedIn ? (
             <div className="relative cursor-pointer">
@@ -123,7 +128,7 @@ function Navbar() {
               </button>
               {open && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg p-4 z-50">
-                  <p className="text-gray-700 font-semibold">
+                  <p className="text-gray-700 font-semibold truncate">
                     {user?.name || user?.role || "User"}
                   </p>
                   <p className="text-gray-500 text-sm break-words truncate max-w-[180px]">
@@ -132,7 +137,7 @@ function Navbar() {
                   <hr className="my-2" />
                   <button
                     onClick={logout}
-                    className="w-full text-left text-red-600 hover:text-red-800 cursor-pointer"
+                    className="w-full text-left text-red-600 hover:text-red-800 cursor-pointer font-medium"
                   >
                     Logout
                   </button>
@@ -140,12 +145,61 @@ function Navbar() {
               )}
             </div>
           ) : (
-            <>
+            <div className="flex gap-4">
               <NavLink to="/user-login" className={navLinkClass}>User Login</NavLink>
               <NavLink to="/officer-login" className={navLinkClass}>Officer Login</NavLink>
-            </>
+            </div>
           )}
         </ul>
+
+        {/* Mobile Hamburger Icon */}
+        <div className="md:hidden flex items-center z-50">
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="text-blue-700 text-3xl focus:outline-none cursor-pointer transition-transform duration-300"
+          >
+            {mobileMenuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Navigation Menu */}
+      <div
+        className={`md:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t-2 border-blue-100 flex flex-col items-center py-6 gap-4 text-lg font-semibold z-40 transition-all duration-300 ease-in-out ${
+          mobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none hidden"
+        }`}
+      >
+        <NavLinks />
+        
+        {isLoggedIn ? (
+          <div className="flex flex-col items-center mt-4 border-t border-gray-200 w-full pt-6 px-4">
+            <div className="flex items-center gap-3 mb-4">
+              <FaUserCircle className="text-blue-700 text-4xl" />
+              <div className="text-center">
+                <p className="text-gray-700 font-bold">
+                  {user?.name || user?.role || "User"}
+                </p>
+                <p className="text-gray-500 text-sm truncate max-w-[200px]">
+                  {user?.email || "user@example.com"}
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={() => {
+                logout();
+                setMobileMenuOpen(false);
+              }}
+              className="text-red-600 hover:text-white hover:bg-red-600 border border-red-600 rounded-md transition-colors duration-300 cursor-pointer px-8 py-2 w-full max-w-[200px] font-bold"
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <div className="flex flex-col items-center gap-4 mt-2 border-t border-gray-200 w-full pt-6">
+            <NavLink to="/user-login" className={navLinkClass}>User Login</NavLink>
+            <NavLink to="/officer-login" className={navLinkClass}>Officer Login</NavLink>
+          </div>
+        )}
       </div>
     </nav>
   );

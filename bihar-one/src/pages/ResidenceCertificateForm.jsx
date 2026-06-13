@@ -981,7 +981,7 @@ function ResidenceCertificateForm() {
                         Accepts JPG, PNG, or PDF.
                       </p>
                       <label className="mt-6 flex cursor-pointer items-center justify-between rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-5 py-5 text-slate-700 transition hover:border-blue-500">
-                        <span>
+                        <span className="truncate max-w-[200px]">
                           {formData.photoFile
                             ? formData.photoFile.name
                             : "Choose photo file"}
@@ -1003,7 +1003,7 @@ function ResidenceCertificateForm() {
                       </h3>
                       <p className="mt-2 text-sm text-slate-600">PDF only.</p>
                       <label className="mt-6 flex cursor-pointer items-center justify-between rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-5 py-5 text-slate-700 transition hover:border-blue-500">
-                        <span>
+                        <span className="truncate max-w-[200px]">
                           {formData.aadhaarFile
                             ? formData.aadhaarFile.name
                             : "Choose Aadhaar PDF"}
@@ -1080,13 +1080,13 @@ function ResidenceCertificateForm() {
                         ].map((field) => (
                           <div
                             key={field}
-                            className="flex items-start justify-between gap-4 border-b border-slate-100 pb-3"
+                            className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 sm:gap-4 border-b border-slate-100 pb-3"
                           >
                             <span className="font-medium text-slate-500">
                               {fieldLabels[field]}
                             </span>
 
-                            <span className="text-right font-semibold text-slate-900">
+                            <span className="sm:text-right font-semibold text-slate-900 break-words max-w-full">
                               {formData[field]}
                             </span>
                           </div>
@@ -1114,13 +1114,13 @@ function ResidenceCertificateForm() {
                         ].map((field) => (
                           <div
                             key={field}
-                            className="flex items-start justify-between gap-4 border-b border-slate-100 pb-3"
+                            className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 sm:gap-4 border-b border-slate-100 pb-3"
                           >
                             <span className="font-medium text-slate-500">
                               {fieldLabels[field]}
                             </span>
 
-                            <span className="text-right font-semibold text-slate-900">
+                            <span className="sm:text-right font-semibold text-slate-900 break-words max-w-full">
                               {formData[field]}
                             </span>
                           </div>
@@ -1139,13 +1139,13 @@ function ResidenceCertificateForm() {
                         {["verificationLevel"].map((field) => (
                           <div
                             key={field}
-                            className="flex items-start justify-between gap-4 border-b border-slate-100 pb-3"
+                            className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 sm:gap-4 border-b border-slate-100 pb-3"
                           >
                             <span className="font-medium text-slate-500">
                               {fieldLabels[field]}
                             </span>
 
-                            <span className="text-right font-semibold text-slate-900">
+                            <span className="sm:text-right font-semibold text-slate-900 break-words max-w-full">
                               {formData[field]}
                             </span>
                           </div>
@@ -1164,14 +1164,14 @@ function ResidenceCertificateForm() {
                         {["photoFile", "aadhaarFile"].map((field) => (
                           <div
                             key={field}
-                            className="flex items-center justify-between gap-4 border-b border-slate-100 pb-3"
+                            className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 border-b border-slate-100 pb-3"
                           >
                             <span className="font-medium text-slate-500">
                               {fieldLabels[field]}
                             </span>
 
-                            <div className="flex items-center gap-3">
-                              <span className="text-right font-semibold text-slate-900">
+                            <div className="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end">
+                              <span className="sm:text-right font-semibold text-slate-900 truncate max-w-[200px] sm:max-w-[150px] md:max-w-[200px]">
                                 {formData[field]?.name || "Not Uploaded"}
                               </span>
 
@@ -1185,7 +1185,7 @@ function ResidenceCertificateForm() {
 
                                     window.open(fileURL, "_blank");
                                   }}
-                                  className="cursor-pointer rounded-lg bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800 transition hover:bg-blue-200"
+                                  className="cursor-pointer rounded-lg bg-blue-100 px-3 py-1 text-sm font-medium text-blue-800 transition hover:bg-blue-200 whitespace-nowrap flex-shrink-0"
                                 >
                                   👁 View
                                 </button>

@@ -60,36 +60,34 @@ const CertificatePage = () => {
   });
 
   return (
-    // ✅ Added print:p-0 and print:bg-white
-    <div className="min-h-screen bg-gray-200 py-10 px-4 print:p-0 print:bg-white">
+    <div className="min-h-screen bg-gray-200 py-6 sm:py-10 px-3 sm:px-4 print:p-0 print:bg-white flex flex-col items-center">
       
       {/* Top Action Bar (Print & Back) */}
-      <div className="max-w-[210mm] mx-auto flex justify-between items-center mb-4 print:hidden">
+      <div className="w-full max-w-[210mm] flex justify-between items-center mb-4 print:hidden gap-3">
         <button
           onClick={() => navigate(-1)}
-          className="bg-slate-600 text-white px-6 py-2 rounded-md hover:bg-slate-700 transition cursor-pointer shadow-sm"
+          className="bg-slate-600 text-white px-4 py-2 sm:px-6 sm:py-2 rounded-md hover:bg-slate-700 transition cursor-pointer shadow-sm text-sm sm:text-base font-medium"
         >
           Back
         </button>
 
         <button
           onClick={() => window.print()}
-          className="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition cursor-pointer shadow-sm"
+          className="bg-green-600 text-white px-4 py-2 sm:px-6 sm:py-2 rounded-md hover:bg-green-700 transition cursor-pointer shadow-sm text-sm sm:text-base font-medium"
         >
           Print Certificate
         </button>
       </div>
 
-      {/* Certificate */}
-      {/* ✅ Added print:min-h-[290mm], print:shadow-none, and print:m-0 */}
-      <div className="w-[210mm] min-h-[297mm] print:min-h-[290mm] mx-auto bg-white border-2 border-black p-12 font-serif relative shadow-lg print:shadow-none print:m-0">
+      {/* Certificate Container */}
+      <div className="w-full max-w-[210mm] min-h-auto sm:min-h-[297mm] print:w-[210mm] print:min-h-[290mm] bg-white border-2 border-black p-6 sm:p-10 md:p-12 print:p-12 font-serif relative shadow-lg print:shadow-none print:m-0 print:border-none">
         
         {/* Faded Watermark at Bottom Center */}
-        <div className="absolute inset-0 flex items-end justify-center pb-16 pointer-events-none">
+        <div className="absolute inset-0 flex items-end justify-center pb-16 pointer-events-none overflow-hidden">
           <img
             src={biharLogo}
             alt="Watermark"
-            className="w-[640px] opacity-[0.14] select-none" 
+            className="w-[280px] sm:w-[400px] md:w-[640px] print:w-[640px] opacity-[0.14] select-none" 
           />
         </div>
 
@@ -98,45 +96,45 @@ const CertificatePage = () => {
           <img
             src={biharLogo}
             alt="Bihar Government"
-            className="w-full max-h-28 object-contain mb-4"
+            className="w-full max-h-20 sm:max-h-24 md:max-h-28 print:max-h-28 object-contain mb-3 sm:mb-4"
           />
 
-          <h1 className="text-3xl font-bold">Government of Bihar</h1>
+          <h1 className="text-xl sm:text-2xl md:text-3xl print:text-3xl font-bold">Government of Bihar</h1>
 
-          <h2 className="text-lg mt-2">Form - XIII</h2>
+          <h2 className="text-sm sm:text-base md:text-lg print:text-lg mt-1 sm:mt-2">Form - XIII</h2>
 
-          <h3 className="text-3xl font-bold mt-4 underline uppercase">
+          <h3 className="text-lg sm:text-xl md:text-3xl print:text-3xl font-bold mt-2 sm:mt-4 underline uppercase">
             Residence Certificate
           </h3>
         </div>
 
         {/* Certificate Details & Applicant Photo */}
-        <div className="mt-10 relative z-10 flex justify-between items-start">
-          <div className="flex-1 pr-4">
+        <div className="mt-6 sm:mt-8 md:mt-10 print:mt-10 relative z-10 flex flex-col-reverse sm:flex-row justify-between items-center sm:items-start gap-6 sm:gap-0">
+          <div className="flex-1 w-full pr-0 sm:pr-4 text-xs sm:text-sm md:text-base print:text-base">
             <div className="flex justify-between">
               <p>
                 <strong>District :</strong> {data.district}
               </p>
             </div>
 
-            <div className="mt-2 flex justify-between">
+            <div className="mt-1 sm:mt-2 flex justify-between">
               <p>
                 <strong>Sub-Division :</strong> {data.subDivision}
               </p>
             </div>
 
-            <div className="mt-2 text-left">
-              <p className="mb-4">
+            <div className="mt-1 sm:mt-2 text-left">
+              <p className="mb-2 sm:mb-4">
                 <strong>Block :</strong> {data.block}
               </p>
-              <p className="font-bold text-lg">
+              <p className="font-bold text-sm sm:text-base md:text-lg print:text-lg">
                 Certificate No : {data.certificateNumber}
               </p>
             </div>
           </div>
 
           {/* Photo Section */}
-          <div className="w-28 h-32 border-2 border-gray-400 overflow-hidden flex items-center justify-center bg-gray-50 flex-shrink-0 ml-4">
+          <div className="w-24 h-28 sm:w-28 sm:h-32 print:w-28 print:h-32 border-2 border-gray-400 overflow-hidden flex items-center justify-center bg-gray-50 flex-shrink-0 sm:ml-4">
             {data.photo ? (
               <img
                 src={`data:image/png;base64,${data.photo}`}
@@ -144,13 +142,13 @@ const CertificatePage = () => {
                 className="w-full h-full object-cover"
               />
             ) : (
-              <span className="text-sm text-gray-400">Photo</span>
+              <span className="text-xs sm:text-sm text-gray-400">Photo</span>
             )}
           </div>
         </div>
 
         {/* Certificate Body */}
-        <div className="mt-12 text-[22px] leading-[52px] text-justify relative z-10">
+        <div className="mt-6 sm:mt-8 md:mt-12 print:mt-12 text-sm sm:text-base md:text-[22px] print:text-[22px] leading-relaxed sm:leading-8 md:leading-[52px] print:leading-[52px] text-justify relative z-10">
           This is to certify that <strong>{data.applicantName}</strong>, son of{" "}
           <strong>{data.fatherName}</strong> and <strong>{data.motherName}</strong>,
           resident of <strong>{data.villageOrTown}</strong>,
@@ -162,12 +160,12 @@ const CertificatePage = () => {
         </div>
 
         {/* Place and Date */}
-        <div className="mt-16 relative z-10">
+        <div className="mt-8 sm:mt-12 md:mt-16 print:mt-16 relative z-10 text-xs sm:text-sm md:text-base print:text-base">
           <p>
             <strong>Place :</strong> {data.block}
           </p>
 
-          <p className="mt-2">
+          <p className="mt-1 sm:mt-2">
             <strong>Date :</strong> {data.certificateIssuedDate ? new Date(data.certificateIssuedDate).toLocaleDateString("en-IN", {
               day: "2-digit",
               month: "2-digit",
@@ -177,24 +175,26 @@ const CertificatePage = () => {
         </div>
 
         {/* QR Code and Signature */}
-        <div className="flex justify-between items-end mt-16 relative z-10">
+        <div className="flex flex-col sm:flex-row justify-between items-center sm:items-end mt-10 sm:mt-12 md:mt-16 print:mt-16 relative z-10 gap-8 sm:gap-0">
           {/* QR */}
           <div className="text-center">
             {data.applicationNumber && (
-              <QRCodeSVG 
-                value={`Certificate No: ${data.certificateNumber}\nName: ${data.applicantName}\nFather's Name: ${data.fatherName}\nGender: ${data.gender}\nVerification Level: ${data.verificationLevel}`} 
-                size={120}
-                level="M"
-              />
+              <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-[120px] md:h-[120px] print:w-[120px] print:h-[120px] mx-auto">
+                <QRCodeSVG 
+                  value={`Certificate No: ${data.certificateNumber}\nName: ${data.applicantName}\nFather's Name: ${data.fatherName}\nGender: ${data.gender}\nVerification Level: ${data.verificationLevel}`} 
+                  style={{ width: "100%", height: "100%" }}
+                  level="M"
+                />
+              </div>
             )}
-            <p className="text-sm mt-2">Scan for Verification</p>
+            <p className="text-xs sm:text-sm mt-2">Scan for Verification</p>
           </div>
 
           {/* Signature */}
-          <div className="text-center">
-            <h3>Sumit Sekhar(Dummy)</h3>
+          <div className="text-center text-sm sm:text-base print:text-base">
+            <h3 className="font-semibold">Sumit Sekhar (Dummy)</h3>
 
-            <div className="w-72 border-t border-black mt-4 pt-2">
+            <div className="w-48 sm:w-56 md:w-72 print:w-72 border-t border-black mt-2 sm:mt-4 pt-2">
               Revenue Officer
             </div>
           </div>
