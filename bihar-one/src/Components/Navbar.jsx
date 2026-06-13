@@ -38,10 +38,12 @@ function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  // FIX APPLIED HERE: Consistent px-4 py-2 across both active and inactive states
+  // Removed md:p-0 from the inactive state to fix the vertical misalignment
   const navLinkClass = ({ isActive }) =>
     isActive
-      ? "bg-blue-700 text-white px-5 py-2 rounded block text-center md:text-left"
-      : "hover:text-blue-700 px-5 py-2 block text-center md:text-left md:p-0";
+      ? "bg-blue-700 text-white px-4 py-2 rounded-md block text-center md:text-left transition-colors"
+      : "hover:bg-blue-50 text-gray-800 hover:text-blue-700 px-4 py-2 rounded-md block text-center md:text-left transition-colors";
 
   const isLoggedIn = !!token;
   const role = localStorage.getItem("role");
@@ -101,7 +103,7 @@ function Navbar() {
   );
 
   return (
-    <nav className="bg-white border-b-4 border-blue-700 z-50 print:hidden relative">
+    <nav className="bg-white border-b-4 border-blue-700 z-50 print:hidden relative shadow-sm">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-5 md:px-10 py-5">
         {/* Logo */}
         <div className="flex-shrink-0 z-50 bg-white">
@@ -115,11 +117,12 @@ function Navbar() {
         </div>
 
         {/* Desktop Navigation Links */}
-        <ul className="hidden md:flex gap-10 text-lg font-semibold items-center z-50">
+        {/* FIX APPLIED HERE: Changed gap-10 to gap-4 to compensate for the new padding on items */}
+        <ul className="hidden md:flex gap-4 text-lg font-semibold items-center z-50">
           <NavLinks />
 
           {isLoggedIn ? (
-            <div className="relative cursor-pointer">
+            <div className="relative cursor-pointer ml-4">
               <button
                 onClick={() => setOpen(!open)}
                 className="text-blue-700 text-3xl focus:outline-none cursor-pointer"
@@ -127,14 +130,14 @@ function Navbar() {
                 <FaUserCircle />
               </button>
               {open && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg p-4 z-50">
+                <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg p-4 z-50 border border-gray-100">
                   <p className="text-gray-700 font-semibold truncate">
                     {user?.name || user?.role || "User"}
                   </p>
                   <p className="text-gray-500 text-sm break-words truncate max-w-[180px]">
                     {user?.email || "user@example.com"}
                   </p>
-                  <hr className="my-2" />
+                  <hr className="my-2 border-gray-200" />
                   <button
                     onClick={logout}
                     className="w-full text-left text-red-600 hover:text-red-800 cursor-pointer font-medium"
@@ -145,7 +148,7 @@ function Navbar() {
               )}
             </div>
           ) : (
-            <div className="flex gap-4">
+            <div className="flex gap-4 ml-4">
               <NavLink to="/user-login" className={navLinkClass}>User Login</NavLink>
               <NavLink to="/officer-login" className={navLinkClass}>Officer Login</NavLink>
             </div>
