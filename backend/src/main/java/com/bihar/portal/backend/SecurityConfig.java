@@ -38,6 +38,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // Public endpoints (no JWT required)
                         .requestMatchers(
+                        "/",            
+                                "/error",               
                                 "/citizens/register",
                                 "/citizens/login",
                                 "/citizens/verify-otp",
@@ -49,11 +51,6 @@ public class SecurityConfig {
                         // Allow preflight OPTIONS requests everywhere
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers("/residence/verify/**").permitAll()
-
-                        // 👉 FIX 1: Allow Spring Boot to send real error messages instead of 403
-                        // Forbidden!
-                        .requestMatchers("/error").permitAll()
-
                         // 👉 FIX 2: Use hasAuthority instead of hasRole
                         .requestMatchers("/residence/apply").hasRole("CITIZEN")
                         .requestMatchers("/residence/approve/ro/**").hasRole("RO")
@@ -72,7 +69,7 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList(
                 "http://localhost:5173",
-                "http://172.30.160.243:5173"));
+                "https://bihar-one.vercel.app"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Accept"));
         configuration.setAllowCredentials(true);
