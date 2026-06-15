@@ -61,6 +61,7 @@ function ResidenceCertificateForm() {
   const [appliedDate, setAppliedDate] = useState("");
   const [expectedDeliveryDate, setExpectedDeliveryDate] = useState("");
   const [formData, setFormData] = useState(initialFormData);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // State to track which fields were auto-filled
   const [autofilledFields, setAutofilledFields] = useState({});
@@ -345,6 +346,8 @@ function ResidenceCertificateForm() {
     }
 
     try {
+      setIsSubmitting(true);
+
       const token = localStorage.getItem("token");
 
       if (!token) {
@@ -424,6 +427,8 @@ function ResidenceCertificateForm() {
     } catch (error) {
       console.error("SUBMIT ERROR:", error);
       alert(error.message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -618,7 +623,9 @@ function ResidenceCertificateForm() {
                       <label className="mb-2 block font-semibold text-slate-800">
                         Gender *
                       </label>
-                      <div className={`flex flex-wrap gap-3 rounded-lg border p-3 transition ${autofilledFields.gender ? "border-blue-300 bg-blue-50" : "border-slate-300 bg-white"}`}>
+                      <div
+                        className={`flex flex-wrap gap-3 rounded-lg border p-3 transition ${autofilledFields.gender ? "border-blue-300 bg-blue-50" : "border-slate-300 bg-white"}`}
+                      >
                         {["Male", "Female", "Other"].map((gender) => (
                           <label
                             key={gender}
@@ -999,14 +1006,14 @@ function ResidenceCertificateForm() {
 
                     <div className="rounded-2xl border border-slate-200 p-6">
                       <h3 className="text-lg font-bold text-slate-900">
-                        Upload Aadhaar
+                        Upload Proof
                       </h3>
                       <p className="mt-2 text-sm text-slate-600">PDF only.</p>
                       <label className="mt-6 flex cursor-pointer items-center justify-between rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-5 py-5 text-slate-700 transition hover:border-blue-500">
                         <span className="truncate max-w-[200px]">
                           {formData.aadhaarFile
                             ? formData.aadhaarFile.name
-                            : "Choose Aadhaar PDF"}
+                            : "Choose document pdf"}
                         </span>
                         <input
                           type="file"
@@ -1223,9 +1230,14 @@ function ResidenceCertificateForm() {
                       <button
                         type="button"
                         onClick={handleSubmit}
-                        className="cursor-pointer rounded-lg bg-green-600 px-10 py-3 font-semibold text-white transition hover:bg-green-700"
+                        disabled={isSubmitting} // Disable when submitting
+                        className={`cursor-pointer rounded-lg px-10 py-3 font-semibold text-white transition ${
+                          isSubmitting
+                            ? "cursor-not-allowed bg-green-400" // Disabled styles
+                            : "bg-green-600 hover:bg-green-700" // Normal styles
+                        }`}
                       >
-                        Submit Application
+                        {isSubmitting ? "Submitting..." : "Submit Application"}
                       </button>
                     </div>
                   </div>

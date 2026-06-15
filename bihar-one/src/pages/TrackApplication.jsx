@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaSearch, FaCheckCircle, FaCircle, FaInfoCircle, FaFileDownload, FaTimesCircle, FaUndo } from "react-icons/fa";
 import { AppContext } from "../context/AppContext";
@@ -10,6 +10,14 @@ export default function TrackApplication() {
   const [verificationLevel, setVerificationLevel] = useState(null);
   const { backendUrl } = useContext(AppContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }, []);
 
   const handleSearch = async () => {
     if (query.trim() !== "") {

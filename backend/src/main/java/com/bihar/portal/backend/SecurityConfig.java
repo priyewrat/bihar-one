@@ -39,8 +39,7 @@ public class SecurityConfig {
                         // Public endpoints (no JWT required)
                         .requestMatchers(
                         "/",            
-                                "/error",  
-                                "/debug-mail",             
+                                "/error",              
                                 "/citizens/register",
                                 "/citizens/login",
                                 "/citizens/verify-otp",

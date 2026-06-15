@@ -44,11 +44,20 @@ public class ResidenceCertificateController {
             @RequestParam(value = "photo", required = false) MultipartFile photo,
             @RequestParam(value = "proof", required = false) MultipartFile proof) throws IOException {
 
+        // Duplicate checks
         if (repository.existsByEmail(email)) {
             return ResponseEntity.badRequest().body("Error: Email already exists!");
         }
         if (repository.existsByAadharNumber(aadharNumber)) {
             return ResponseEntity.badRequest().body("Error: Aadhaar number already exists!");
+        }
+
+        // File size validation BEFORE reading bytes
+        if (photo != null && photo.getSize() > 5 * 1024 * 1024) {
+            return ResponseEntity.badRequest().body("Photo size must be less than 5MB");
+        }
+        if (proof != null && proof.getSize() > 5 * 1024 * 1024) {
+            return ResponseEntity.badRequest().body("Proof size must be less than 5MB");
         }
 
         ResidenceCertificate certificate = new ResidenceCertificate();
@@ -70,12 +79,10 @@ public class ResidenceCertificateController {
         certificate.setVerificationLevel(verificationLevel);
 
         // Generate unique application number
-        String appNumber = "RES-" + System.currentTimeMillis();
-        certificate.setApplicationNumber(appNumber);
+        certificate.setApplicationNumber("RES-" + System.currentTimeMillis());
 
         // Initial status
         certificate.setStatus("ASSIGNED_TO_BO");
-
         certificate.setAppliedDate(LocalDateTime.now());
 
         // Save uploaded files if provided
@@ -86,17 +93,9 @@ public class ResidenceCertificateController {
             certificate.setProof(proof.getBytes());
         }
 
-        if (photo != null && photo.getSize() > 5 * 1024 * 1024) {
-            return ResponseEntity.badRequest().body("Photo size must be less than 5MB");
-        }
-
-        if (proof != null && proof.getSize() > 5 * 1024 * 1024) {
-            return ResponseEntity.badRequest().body("Proof size must be less than 5MB");
-        }
-
         ResidenceCertificate saved = repository.save(certificate);
-        return ResponseEntity
-                .ok("Application submitted successfully. Your Application Number is: " + saved.getApplicationNumber());
+        return ResponseEntity.ok(
+                "Application submitted successfully. Your Application Number is: " + saved.getApplicationNumber());
     }
 
     // --- Get All Applications ---
