@@ -1,6 +1,10 @@
 import React, { useEffect } from "react";
+import { AlertTriangle, ArrowLeft, Home } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const CasteCertificateForm = () => {
+  const navigate = useNavigate();
+
   // This hook ensures the page scrolls to the top when the component loads
   useEffect(() => {
     window.scrollTo({
@@ -10,37 +14,40 @@ const CasteCertificateForm = () => {
     });
   }, []);
 
-  return (
-    <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 py-10 mt-20">
-      <div className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-xl">
-        {/* Alert Icon */}
-        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-slate-50">
-          <svg
-            className="h-10 w-10 text-slate-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-            ></path>
-          </svg>
+   return (
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+      <div className="bg-white shadow-xl rounded-2xl p-10 max-w-2xl w-full text-center">
+        {/* Icon */}
+        <div className="flex justify-center mb-6">
+          <AlertTriangle size={90} className="text-yellow-500" />
         </div>
 
         {/* Heading */}
-        <h2 className="mb-3 text-2xl font-bold text-slate-800 md:text-3xl">
-          Service Unavailable
-        </h2>
+        <h1 className="text-4xl font-bold text-red-600 mb-4">
+          Service Not Available
+        </h1>
 
         {/* Description */}
-        <p className="text-slate-500">
-          The Caste Certificate Application service is currently undergoing
-          maintenance or is unavailable. Please check back later.
+        <p className="text-lg text-gray-600 mb-8">
+          This service is currently unavailable. Please try again later or
+          contact the concerned department for assistance.
         </p>
+
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <button
+            onClick={() => navigate("/")}
+            className="flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800 text-white px-6 py-3 rounded-lg font-semibold"
+          >
+            <Home size={20} />
+            Go To Home
+          </button>
+        </div>
+
+        {/* Footer Note */}
+        <div className="mt-8 pt-6 border-t text-sm text-gray-500">
+          We apologize for the inconvenience.
+        </div>
       </div>
     </div>
   );
