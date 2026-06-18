@@ -107,8 +107,10 @@ function Navbar() {
       <div className="max-w-7xl mx-auto flex justify-between items-center px-5 md:px-10 py-5">
         {/* Logo */}
         <div className="flex-shrink-0 z-50 bg-white">
-          <h1 className="text-3xl md:text-4xl font-bold">
-            <span className="text-orange-500">Bihar</span>
+          <h1 className="text-3xl md:text-4xl font-bold cursor-pointer" onClick={() => window.location.href = '/'}>
+            <span className="text-orange-500">
+              Bihar
+            </span>
             <span className="text-blue-700">One</span>
           </h1>
           <p className="text-xs md:text-sm text-gray-600">
